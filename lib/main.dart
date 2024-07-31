@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ByteBankApp());
 
+// classe que Roda
 class ByteBankApp extends StatelessWidget {
   const ByteBankApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +15,8 @@ class ByteBankApp extends StatelessWidget {
     );
   }
 }
+
+
 
 // Formulário Transferencia;
 class FormularioTransferencia extends StatelessWidget {
@@ -31,6 +33,7 @@ class FormularioTransferencia extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
+          Editor(_controladorCampoNumeroConta, "Número da conta", "000-000-000-00"),
 
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -44,6 +47,8 @@ class FormularioTransferencia extends StatelessWidget {
               keyboardType: TextInputType.number,
             ),
           ),
+
+          // Botão de Confirmar.
           OutlinedButton(
               onPressed: () {
                 final String numeroConta = _controladorCampoNumeroConta.text;
@@ -59,8 +64,10 @@ class FormularioTransferencia extends StatelessWidget {
   }
 }
 
+
+// Componente para construir label (Inputs)
 class Editor extends StatelessWidget {
-  final String _controlador;
+  final TextEditingController _controlador;
   final String _label;
   final String? _hintText;
 
@@ -72,7 +79,7 @@ class Editor extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: TextField(
-        controller: _controlador as TextEditingController,
+        controller: _controlador,
         style: const TextStyle(
           fontSize: 24.0,
         ),
@@ -85,7 +92,9 @@ class Editor extends StatelessWidget {
   }
 }
 
-// Lista de Transferência
+
+
+// Home Principal - Lista de Transferencia
 class ListaTransferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -111,6 +120,8 @@ class ListaTransferencia extends StatelessWidget {
   }
 }
 
+
+// Componente de Lista de Transferencia;
 class ItemTransferencia extends StatelessWidget {
   final String value;
   final String conta;
